@@ -10,13 +10,91 @@
 // remove():   Head --> null y devuelve 1
 // search: Busca un valor dentro de la lista. Puede recibir un valor o una función. Si no hubiera resultados, devuelve null.
 
-function LinkedList() {
+// function LinkedList() {
 
+// }
+
+// function Node(value){
+
+// }
+
+/*Método ES6*/
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
 }
 
-function Node(value){
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.__length__ = 0;
+  }
 
+  add(value) {
+    let node = new Node(value);
+
+    if(!this.head) {
+      this.head = node;
+    }else {
+      let currentNode = this.head;
+
+      while(currentNode.next !== null) {
+        currentNode = currentNode.next;
+      }
+
+      currentNode.next = node;
+    }
+
+    this.__length__++;
+    return "Added node";
+  }
+
+  remove() {
+    if(!this.head) {
+      return null;
+
+    }else if(this.__length__ === 1) {
+      let removedValue = this.head;
+      this.head = null;
+      this.__length__--;
+      return removedValue.value;
+
+    }
+      
+    let currentNode, lastNode, removedValue;
+
+    currentNode = this.head;
+    while(currentNode.next !== null) {
+      lastNode = currentNode;
+      currentNode = currentNode.next;
+    }
+
+    removedValue = currentNode.value;
+    lastNode.next = null;
+    this.__length__--;
+
+    return removedValue;
+  }
+
+  search(value) {
+		let currentNode;
+
+		currentNode = this.head;
+    while(currentNode !== null) {
+      if(currentNode.value === value) {
+        return currentNode.value;
+      }
+      currentNode = currentNode.next;
+    }
+
+    return null;
+  }
 }
+
+
 
 // Hash Table( ver información en: https://es.wikipedia.org/wiki/Tabla_hash)
 // Una Hash table contiene un arreglo de "contenedores" o buckets donde puede guardar información.
@@ -30,9 +108,52 @@ function Node(value){
 //    - Usar el número obtenido, para buscar(llamando al método get) el contenedor o bucket donde está el valor.
 //    - Retornar dicho valor.
 
-function HashTable() {
+// function HashTable() {
 
+// }
+
+/*Método ES6*/
+
+class HashTable{
+  constructor(){
+    this.numBuckets = 35;
+    this.bucket = [];
+  }
+
+  get(value){
+    let key = this.hasKey(value);
+    return this.bucket[key];
+  }
+
+  set(key, value) {
+    let position = this.hash(value);
+    let obj = {};
+
+    obj[key] = value;
+    
+    this.bucket[position] = obj;
+    return "Set in bucket";
+  }
+
+  hasKey() {
+    
+  }
+
+  hash(string){
+    //Calcula la posición donde irá el dato que nos envían
+    let sum = 0, key;
+
+    for(let i = 0; i < string.length; i++) {
+      sum += string.charCodeAt(i);
+    }
+    console.log(sum);
+
+    key = sum % this.numBuckets;
+
+    return key;
+  }
 }
+
 
 
 // No modifiquen nada debajo de esta linea
