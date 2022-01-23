@@ -9,10 +9,6 @@ class Queue {
     }
 
     dequeue() {
-        // if(!this.element.length) {
-        //     return undefined;
-        // }
-
         return this.element.shift();
     }
 
