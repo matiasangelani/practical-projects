@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Matias",
+    "attack": "50",
+    "defense": "37",
+    "dribble": "78"
+  },
+  {
+    "id": 2,
+    "name": "Mauro",
+    "attack": "25",
+    "defense": "48",
+    "dribble": "62"
+  },
+  {
+    "id": 3,
+    "name": "Ivan",
+    "attack": "94",
+    "defense": "67",
+    "dribble": "88"
+  }
+]
